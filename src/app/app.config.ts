@@ -4,6 +4,11 @@ import {
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
+import {
+  provideAngularQuery,
+  QueryClient,
+} from '@tanstack/angular-query-experimental';
+
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -11,5 +16,6 @@ export const appConfig: ApplicationConfig = {
     // provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideExperimentalZonelessChangeDetection(),
+    provideAngularQuery(new QueryClient()),
   ],
 };

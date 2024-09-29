@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimental';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, AngularQueryDevtools],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   title = 'frontend-angular-zoneless-tanstack-github-issues-app';

@@ -32,6 +32,9 @@ importers:
       '@angular/router':
         specifier: ^18.2.0
         version: 18.2.5(@angular/common@18.2.5(@angular/core@18.2.5(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.5(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.5(@angular/animations@18.2.5(@angular/core@18.2.5(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.5(@angular/core@18.2.5(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.5(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1)
+      '@tanstack/angular-query-devtools-experimental':
+        specifier: ^5.58.0
+        version: 5.58.0(@angular/common@18.2.5(@angular/core@18.2.5(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.5(rxjs@7.8.1)(zone.js@0.14.10))(@tanstack/angular-query-experimental@5.56.2(@angular/core@18.2.5(rxjs@7.8.1)(zone.js@0.14.10)))
       '@tanstack/angular-query-experimental':
         specifier: ^5.56.2
         version: 5.56.2(@angular/core@18.2.5(rxjs@7.8.1)(zone.js@0.14.10))
@@ -1510,6 +1513,13 @@ packages:
   '@socket.io/component-emitter@3.1.2':
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
 
+  '@tanstack/angular-query-devtools-experimental@5.58.0':
+    resolution: {integrity: sha512-3x9Gt0Uozvjtf3qUDtaC5BIfRnS/GXgNlkbt8rOFfbrTv7M8/vyvsYmPlkwOL1M1bOXk9LK/g2R1YUwn9FoKVA==}
+    peerDependencies:
+      '@angular/common': '>=16.0.0'
+      '@angular/core': '>=16.0.0'
+      '@tanstack/angular-query-experimental': ^5.56.2
+
   '@tanstack/angular-query-experimental@5.56.2':
     resolution: {integrity: sha512-etaaMMiApXdZ+D/Zpi25De8XclgsUZVJcW9pQnOgl4BD6PkXSfuvOFp4RLzTHXkFF+W9BOvjPc8TPdqFJaH26Q==}
     peerDependencies:
@@ -1517,6 +1527,9 @@ packages:
 
   '@tanstack/query-core@5.56.2':
     resolution: {integrity: sha512-gor0RI3/R5rVV3gXfddh1MM+hgl0Z4G7tj6Xxpq6p2I03NGPaJ8dITY9Gz05zYYb/EJq9vPas/T4wn9EaDPd4Q==}
+
+  '@tanstack/query-devtools@5.58.0':
+    resolution: {integrity: sha512-iFdQEFXaYYxqgrv63ots+65FGI+tNp5ZS5PdMU1DWisxk3fez5HG3FyVlbUva+RdYS5hSLbxZ9aw3yEs97GNTw==}
 
   '@tufjs/canonical-json@2.0.0':
     resolution: {integrity: sha512-yVtV8zsdo8qFHe+/3kw81dSLyF7D576A5cCFCi4X7B39tWT7SekaEFUnvnWJHz+9qO7qJTah1JbrDjWKqFtdWA==}
@@ -5891,6 +5904,14 @@ snapshots:
 
   '@socket.io/component-emitter@3.1.2': {}
 
+  '@tanstack/angular-query-devtools-experimental@5.58.0(@angular/common@18.2.5(@angular/core@18.2.5(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.5(rxjs@7.8.1)(zone.js@0.14.10))(@tanstack/angular-query-experimental@5.56.2(@angular/core@18.2.5(rxjs@7.8.1)(zone.js@0.14.10)))':
+    dependencies:
+      '@angular/common': 18.2.5(@angular/core@18.2.5(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1)
+      '@angular/core': 18.2.5(rxjs@7.8.1)(zone.js@0.14.10)
+      '@tanstack/angular-query-experimental': 5.56.2(@angular/core@18.2.5(rxjs@7.8.1)(zone.js@0.14.10))
+      '@tanstack/query-devtools': 5.58.0
+      tslib: 2.7.0
+
   '@tanstack/angular-query-experimental@5.56.2(@angular/core@18.2.5(rxjs@7.8.1)(zone.js@0.14.10))':
     dependencies:
       '@angular/core': 18.2.5(rxjs@7.8.1)(zone.js@0.14.10)
@@ -5898,6 +5919,8 @@ snapshots:
       tslib: 2.7.0
 
   '@tanstack/query-core@5.56.2': {}
+
+  '@tanstack/query-devtools@5.58.0': {}
 
   '@tufjs/canonical-json@2.0.0': {}
 
