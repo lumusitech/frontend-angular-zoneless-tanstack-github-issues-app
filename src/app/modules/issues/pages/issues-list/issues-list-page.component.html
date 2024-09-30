@@ -29,10 +29,10 @@
     @if(labelsQuery.isLoading()) {
     <p>Loading...</p>
     } @else {
-    <p>Already have labels</p>
-    <pre>
+    <issues-labels-selector [labels]="labelsQuery.data() ?? []" />
+    <!-- <pre>
       {{ labelsQuery.data() | json }}
-    </pre>
+    </pre> -->
     }
     <!-- Todo: Spinner -->
 
