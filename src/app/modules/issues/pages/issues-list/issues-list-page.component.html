@@ -25,6 +25,15 @@
   <!-- Labels -->
   <div class="mt-4">
     <h3>Labels</h3>
+
+    @if(labelsQuery.isLoading()) {
+    <p>Loading...</p>
+    } @else {
+    <p>Already have labels</p>
+    <pre>
+      {{ labelsQuery.data() | json }}
+    </pre>
+    }
     <!-- Todo: Spinner -->
 
     <!-- Todo: Label selector -->
