@@ -15,7 +15,7 @@ export class IssueService {
   }));
 
   issueCommentsQuery = injectQuery(() => ({
-    queryKey: ['issue-comments', this.issueNumber()],
+    queryKey: ['issue', this.issueNumber(), 'comments'],
     queryFn: () => getIssueCommentsByNumber(this.issueNumber()!),
     enabled: !!this.issueNumber(),
   }));

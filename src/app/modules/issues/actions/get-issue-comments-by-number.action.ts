@@ -7,7 +7,7 @@ const GITHUB_TOKEN = environment.githubToken;
 
 export const getIssueCommentsByNumber = async (
   issueNumber: string
-): Promise<GithubIssue> => {
+): Promise<GithubIssue[]> => {
   await sleep(1500);
 
   try {
@@ -19,9 +19,9 @@ export const getIssueCommentsByNumber = async (
 
     if (!resp.ok) throw new Error("Can't load issue comments");
 
-    const issue: GithubIssue = await resp.json();
+    const issueComments: GithubIssue[] = await resp.json();
 
-    return issue;
+    return issueComments;
   } catch (error) {
     throw new Error("Can't load issue comments");
   }
