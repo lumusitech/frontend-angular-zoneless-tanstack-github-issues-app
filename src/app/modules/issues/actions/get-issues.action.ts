@@ -7,7 +7,7 @@ const GITHUB_TOKEN = environment.githubToken;
 
 export const getIssues = async (
   state: State = State.All,
-  selectedLabels: string[]
+  selectedLabels: string[] = []
 ): Promise<GithubIssue[]> => {
   await sleep(1500);
 
