@@ -1,27 +1,82 @@
-# FrontendAngularZonelessTanstackGithubIssuesApp
+# Tanstack Github Issues App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.5.
+This Angular project is designed to practice using TanStack features within a GitHub issue application. It utilizes Tailwind CSS, ngx-markdown, and the experimental TanStack Query library for Angular.
 
-## Development server
+For more info about TanStack, visit [TanStack query docs](https://tanstack.com/query/latest/docs/framework/angular/overview).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+For more info about Tailwind, visit [Tailwindcss docs](https://tailwindcss.com/).
 
-## Code scaffolding
+For more info about NGX Markdown, visit [Markdown docs](https://www.npmjs.com/package/ngx-markdown).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+After clone, run:
 
-## Build
+1. Create environments:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+   ```bash
+   ng g environments
+   ```
 
-## Running unit tests
+2. Add baseUrl and githubToken props to environment files:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   ```javascript
+   export const environment = {
+     baseUrl: "https://api.github.com/repos/angular/angular",
+     githubToken: "your_github_token",
+   };
+   ```
 
-## Running end-to-end tests
+3. Run project:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+   ```bash
+   ng s -o
+   ```
 
-## Further help
+## Build Details
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Create project
+
+   ```sh
+   ng new [project name]
+   ```
+
+   - Choose CSS as the stylesheet format.
+   - Disable SSR (Server-Side Rendering) as it's not required for this application.
+
+2. Install and add the required app providers:
+
+   ```bash
+   pnpm add @tanstack/angular-query-experimental
+   pnpm i ngx-markdown
+   ```
+
+   ```javascript
+   export const appConfig: ApplicationConfig = {
+     providers: [
+       // provideZoneChangeDetection({ eventCoalescing: true }),
+       provideRouter(routes),
+       provideExperimentalZonelessChangeDetection(),
+       provideAngularQuery(new QueryClient()),
+       provideMarkdown(),
+     ],
+   };
+   ```
+
+## Info about folders structure
+
+📁 **helpers:** This directory contains utility functions for reuse throughout the app.
+
+📁 **modules:** SoC (Separation of Concerns). This project applies the Separation of Concerns principle by isolating the GitHub issues feature within its own module.
+
+📁 **issues/actions:** This directory contains a collection of framework-agnostic functions designed to interact with external services or execute asynchronous calls to the GitHub API. These functions are independent of any specific framework, promoting code reusability.
+
+📁 **issues/components:** This directory contains reusable components for the issues pages.
+
+📁 **issues/interfaces:** This directory contains issues interfaces.
+
+📁 **issues/pages:** This directory contains issues pages.
+
+📁 **issues/services:** This directory contains services that utilize TanStack Query to manage HTTP requests related to issues, including caching. These services reuse functions defined in issues/actions for query functions, promoting code reusability.
+
+## Testing
+
+While TanStack lacks specific Angular testing documentation, we follow Fernando Herrera's recommendations.
