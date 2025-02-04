@@ -1,13 +1,13 @@
-import { JsonPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { IssueItemComponent } from '../../components/issue-item/issue-item.component';
 import { LabelsSelectorComponent } from '../../components/labels-selector/labels-selector.component';
+import { State } from '../../interfaces';
 import { IssuesService } from '../../services/issues.service';
 
 @Component({
   selector: 'issues-list-page',
   standalone: true,
-  imports: [JsonPipe, LabelsSelectorComponent, IssueItemComponent],
+  imports: [LabelsSelectorComponent, IssueItemComponent],
   templateUrl: './issues-list-page.component.html',
 })
 export default class IssuesListPageComponent {
@@ -19,5 +19,16 @@ export default class IssuesListPageComponent {
 
   get issuesQuery() {
     return this.issuesService.issuesQuery;
+  }
+
+  onChangeState(newState: string) {
+    const state =
+      {
+        ['all']: State.All,
+        ['open']: State.Open,
+        ['closed']: State.Close,
+      }[newState] ?? State.All;
+
+    this.issuesService.showIssuesByState(state);
   }
 }
