@@ -3,6 +3,8 @@
   <div
     class="p-2 border rounded-md cursor-pointer hover:bg-slate-950"
     [ngStyle]="{ 'border-color': '#' + label.color }"
+    (click)="onToggleLabel(label.name)"
+    [class.selected-label]="isSelected(label.name)"
   >
     {{ label.name }}
   </div>

@@ -8,6 +8,7 @@ import { State } from '../interfaces';
 })
 export class IssuesService {
   selectedState = signal<State>(State.All);
+  selectedLabels = signal(new Set<string>());
 
   labelsQuery = injectQuery(() => ({
     queryKey: ['labels'],
@@ -15,11 +16,31 @@ export class IssuesService {
   }));
 
   issuesQuery = injectQuery(() => ({
-    queryKey: ['issues', this.selectedState()],
-    queryFn: () => getIssues(this.selectedState()),
+    queryKey: [
+      'issues',
+      {
+        state: this.selectedState(),
+        selectedLabels: [...this.selectedLabels()],
+      },
+    ],
+    queryFn: () => getIssues(this.selectedState(), [...this.selectedLabels()]),
   }));
 
   showIssuesByState(state: State) {
     this.selectedState.set(state);
+  }
+
+  toggleLabel(label: string) {
+    const labels = this.selectedLabels();
+
+    if (labels.has(label)) {
+      labels.delete(label);
+    } else {
+      labels.add(label);
+    }
+
+    // putting this.selectedLabels.set(new Set(labels)), in place of this.selectedLabels.set(labels)
+    // We broke the reference to the old Set and we send a new Set with new values
+    this.selectedLabels.set(new Set(labels));
   }
 }
