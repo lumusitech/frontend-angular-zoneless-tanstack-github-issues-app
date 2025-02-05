@@ -35,7 +35,7 @@ After clone, run:
 
 1. Create project
 
-   ```sh
+   ```bash
    ng new [project name]
    ```
 
@@ -80,3 +80,30 @@ After clone, run:
 ## Testing
 
 While TanStack lacks specific Angular testing documentation, we follow Fernando Herrera's recommendations.
+
+Testing Angular services that interact with TanStack Query requires the injection of a QueryClient instance. To simplify the initial setup of the testing environment, the use of the VS Code snippet for services is recommended.
+
+```javascript
+import { TestBed } from "@angular/core/testing";
+import { provideAngularQuery, QueryClient } from "@tanstack/angular-query-experimental";
+import { IssueService } from "./issue.service";
+
+describe("IssueService", () => {
+  let service: IssueService;
+  const queryClient = new QueryClient();
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      // Teardown prevents the QueryClient from being destroyed after each test,
+      // avoiding the "Injector has already been destroyed" error (NG0205).
+      teardown: { destroyAfterEach: false },
+      providers: [provideAngularQuery(queryClient)],
+    });
+    service = TestBed.inject(IssueService);
+  });
+
+  it("should be created", () => {
+    expect(service).toBeTruthy();
+  });
+});
+```
