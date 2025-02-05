@@ -22,6 +22,6 @@ export const getIssueCommentsByNumber = async (
 
     return issueComments;
   } catch (error) {
-    throw new Error("Can't load issue comments");
+    throw "Can't load issue comments";
   }
 };
