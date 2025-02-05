@@ -45,11 +45,5 @@ describe('GetIssueByNumber action', () => {
       console.error(error);
       expect(error).toBe(`Can't load issue ${issueNumber}`);
     }
-
-    // expect(window.fetch).toHaveBeenCalledWith(requestURL, {
-    //   headers: {
-    //     Authorization: `Bearer ${GITHUB_TOKEN}`,
-    //   },
-    // });
   });
 });
