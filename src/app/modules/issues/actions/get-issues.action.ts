@@ -1,4 +1,3 @@
-import { sleep } from '@helpers/sleep';
 import { environment } from 'src/environments/environment.development';
 import { GithubIssue, State } from '../interfaces';
 
@@ -9,7 +8,7 @@ export const getIssues = async (
   state: State = State.All,
   selectedLabels: string[] = []
 ): Promise<GithubIssue[]> => {
-  await sleep(1500);
+  // await sleep(1500);
 
   const params = new URLSearchParams();
   params.append('state', state);
@@ -28,7 +27,6 @@ export const getIssues = async (
     if (!resp.ok) throw new Error("Can't load issues");
 
     const issues: GithubIssue[] = await resp.json();
-    console.log({ issues });
 
     return issues;
   } catch (error) {
