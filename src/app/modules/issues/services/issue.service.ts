@@ -3,7 +3,11 @@ import {
   injectQuery,
   injectQueryClient,
 } from '@tanstack/angular-query-experimental';
-import { getIssueByNumber, getIssueCommentsByNumber } from '../actions';
+import {
+  getIssueByNumber,
+  getIssueCommentsByNumber,
+  getLabels,
+} from '../actions';
 import { GithubIssue } from '../interfaces';
 
 @Injectable({
@@ -12,6 +16,11 @@ import { GithubIssue } from '../interfaces';
 export class IssueService {
   private readonly issueNumber = signal<string | null>(null);
   private readonly queryClient = injectQueryClient();
+
+  labelsQuery = injectQuery(() => ({
+    queryKey: ['labels'],
+    queryFn: () => getLabels(),
+  }));
 
   issueQuery = injectQuery(() => ({
     queryKey: ['issue', this.issueNumber()],

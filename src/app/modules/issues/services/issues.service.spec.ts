@@ -23,4 +23,22 @@ describe('IssueService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should load labels', async () => {
+    // This ensures labels are reloaded, preventing undefined errors.
+    const { data } = await service.labelsQuery.refetch();
+
+    expect(data?.length).toBe(30);
+
+    // it takes the first label of labels array
+    const [label] = data!;
+
+    expect(typeof label.color).toBe('string');
+    expect(typeof label.default).toBe('boolean');
+    expect(typeof label.description).toBe('string');
+    expect(typeof label.id).toBe('number');
+    expect(typeof label.name).toBe('string');
+    expect(typeof label.node_id).toBe('string');
+    expect(typeof label.url).toBe('string');
+  });
 });
