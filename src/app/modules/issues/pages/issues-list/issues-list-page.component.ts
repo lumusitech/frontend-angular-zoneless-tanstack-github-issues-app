@@ -26,7 +26,7 @@ export default class IssuesListPageComponent {
       {
         ['all']: State.All,
         ['open']: State.Open,
-        ['closed']: State.Close,
+        ['closed']: State.Closed,
       }[newState] ?? State.All;
 
     this.issuesService.showIssuesByState(state);
