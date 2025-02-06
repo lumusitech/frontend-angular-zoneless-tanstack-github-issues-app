@@ -99,7 +99,7 @@ export enum NodeID {
 
 export enum State {
   Open = 'open',
-  Close = 'closed',
+  Closed = 'closed',
   All = 'all',
 }
 
